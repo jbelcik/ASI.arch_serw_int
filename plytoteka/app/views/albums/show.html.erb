@@ -1,0 +1,28 @@
+<%- model_class = Album -%>
+<div class="page-header">
+  <h1>Album</h1>
+</div>
+
+<dl class="dl-horizontal">
+  <dt><strong>Tytuł:</strong></dt>
+  <dd><%= @album.tytul %></dd>
+  <dt><strong>Wykonawca:</strong></dt>
+  <dd><%= @album.wykonawca %></dd>
+  <dt><strong>Gatunek:</strong></dt>
+  <dd><%= @album.tag_list %></dd>
+  <dt><strong>Rok powstania:</strong></dt>
+  <dd><%= @album.rok_powstania %></dd>
+  <dt><strong>Opis:</strong></dt>
+  <dd><%= @album.opis %></dd>
+</dl>
+
+<br/><br/>
+
+  <%= link_to ' Edytuj ', edit_album_path(@album), :class => "btn" %>
+  <%= link_to ' Usuń ',
+              album_path(@album),
+              :method => 'delete',
+              data: { confirm: 'Jesteś pewien?' },
+              :class => "btn" %>
+  <%= link_to ' Lista albumów ', albums_path, :class => "btn" %>
+</div>

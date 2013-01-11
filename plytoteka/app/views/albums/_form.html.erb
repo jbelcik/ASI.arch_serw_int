@@ -1,0 +1,51 @@
+<%= form_for @album do |f| %>
+  
+  <table> 
+    <tr>
+      <td>
+        <div class = "span6">
+          <%= f.label :tytul, "Tytuł:" %>
+          <%= f.text_field :tytul, :class => "span6" %>
+        </div>
+      </td>
+      
+      <td>
+        <div class = "span6">
+          <%= f.label :wykonawca, "Wykonawca:" %>
+          <%= f.text_field :wykonawca, :class => "span6" %>
+        </div>
+      </td>
+    </tr>
+    
+    <tr>
+      <td>
+        <div class = "span6">
+          <%= f.label :tag_list, "Gatunek (rozdzielone przecinkami):" %>
+          <%= f.text_field :tag_list, :class => "span6" %>
+        </div>
+      </td>
+
+      <td>
+        <div class = "span6">
+          <%= f.label :rok_powstania, "Rok powstania:" %>
+          <%= f.text_field :rok_powstania, :class => "span6" %>
+        </div>
+      </td>
+    </tr>
+
+    <tr>
+      <td colspan = 2>
+        <div class = "span12">
+          <%= f.label :opis, "Opis:" %>
+          <%= f.text_area :opis, :class => "span12", :rows => 5 %>
+        </div>
+      </td>
+    </tr>
+  </table>
+
+  <br/><br/>
+
+  <%= f.button ' OK ', method: :submit, :class => "btn" %>
+  <%= link_to ' Anuluj ', albums_path, :class => "btn" %>
+
+<% end %>

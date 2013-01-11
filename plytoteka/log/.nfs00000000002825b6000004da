@@ -1,0 +1,93 @@
+Connecting to database specified by database.yml
+
+
+Started GET "/albums" for 193.34.3.1 at 2013-01-11 20:30:49 +0100
+Processing by AlbumsController#index as HTML
+Completed 500 Internal Server Error in 1ms
+
+ActiveRecord::StatementInvalid (Could not find table 'albums'):
+  app/controllers/albums_controller.rb:9:in `index'
+
+
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p194/gems/actionpack-3.2.9/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.1ms)
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p194/gems/actionpack-3.2.9/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.7ms)
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p194/gems/actionpack-3.2.9/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (8.5ms)
+
+
+Started GET "/albums" for 193.34.3.1 at 2013-01-11 20:30:51 +0100
+Processing by AlbumsController#index as HTML
+Completed 500 Internal Server Error in 1ms
+
+ActiveRecord::StatementInvalid (Could not find table 'albums'):
+  app/controllers/albums_controller.rb:9:in `index'
+
+
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p194/gems/actionpack-3.2.9/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.6ms)
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p194/gems/actionpack-3.2.9/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.0ms)
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p194/gems/actionpack-3.2.9/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (9.3ms)
+Connecting to database specified by database.yml
+  [1m[36m (0.2ms)[0m  [1mselect sqlite_version(*)[0m
+  [1m[35m (280.4ms)[0m  CREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) 
+  [1m[36m (316.4ms)[0m  [1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [1m[35m (119.5ms)[0m  SELECT "schema_migrations"."version" FROM "schema_migrations" 
+Migrating to CreateAlbums (20130108131438)
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (198.5ms)[0m  CREATE TABLE "albums" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "tytul" varchar(255), "wykonawca" varchar(255), "rok_powstania" integer, "opis" text, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20130108131438')[0m
+  [1m[35m (233.0ms)[0m  commit transaction
+Migrating to ActsAsTaggableOnMigration (20130108204811)
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (41.5ms)[0m  CREATE TABLE "tags" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255)) 
+  [1m[36m (0.1ms)[0m  [1mCREATE TABLE "taggings" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "tag_id" integer, "taggable_id" integer, "taggable_type" varchar(255), "tagger_id" integer, "tagger_type" varchar(255), "context" varchar(128), "created_at" datetime) [0m
+  [1m[35m (0.1ms)[0m  CREATE INDEX "index_taggings_on_tag_id" ON "taggings" ("tag_id")
+  [1m[36m (0.1ms)[0m  [1mCREATE INDEX "index_taggings_on_taggable_id_and_taggable_type_and_context" ON "taggings" ("taggable_id", "taggable_type", "context")[0m
+  [1m[35m (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20130108204811')
+  [1m[36m (194.1ms)[0m  [1mcommit transaction[0m
+  [1m[35m (119.9ms)[0m  SELECT "schema_migrations"."version" FROM "schema_migrations" 
+
+
+Started GET "/albums" for 193.34.3.1 at 2013-01-11 20:32:42 +0100
+Processing by AlbumsController#index as HTML
+  [1m[36mAlbum Load (113.2ms)[0m  [1mSELECT "albums".* FROM "albums" [0m
+  [1m[35mActsAsTaggableOn::Tag Load (119.5ms)[0m  SELECT tags.*, taggings.tags_count AS count FROM "tags" JOIN (SELECT taggings.tag_id, COUNT(taggings.tag_id) AS tags_count FROM "taggings" INNER JOIN albums ON albums.id = taggings.taggable_id WHERE (taggings.taggable_type = 'Album' AND taggings.context = 'tags') AND (taggings.taggable_id IN(SELECT albums.id FROM "albums" )) GROUP BY taggings.tag_id HAVING COUNT(taggings.tag_id) > 0) AS taggings ON taggings.tag_id = tags.id
+  Rendered albums/index.html.erb within layouts/application (319.3ms)
+Compiled bootstrap_and_overrides.css  (1255ms)  (pid 17429)
+Compiled albums.css  (6ms)  (pid 17429)
+Compiled scaffolds.css  (9ms)  (pid 17429)
+Compiled application.css  (1657ms)  (pid 17429)
+Compiled jquery.js  (1ms)  (pid 17429)
+Compiled jquery_ujs.js  (0ms)  (pid 17429)
+Compiled twitter/bootstrap/bootstrap-transition.js  (0ms)  (pid 17429)
+Compiled twitter/bootstrap/bootstrap-alert.js  (0ms)  (pid 17429)
+Compiled twitter/bootstrap/bootstrap-modal.js  (0ms)  (pid 17429)
+Compiled twitter/bootstrap/bootstrap-dropdown.js  (0ms)  (pid 17429)
+Compiled twitter/bootstrap/bootstrap-scrollspy.js  (0ms)  (pid 17429)
+Compiled twitter/bootstrap/bootstrap-tab.js  (0ms)  (pid 17429)
+Compiled twitter/bootstrap/bootstrap-tooltip.js  (0ms)  (pid 17429)
+Compiled twitter/bootstrap/bootstrap-popover.js  (0ms)  (pid 17429)
+Compiled twitter/bootstrap/bootstrap-button.js  (0ms)  (pid 17429)
+Compiled twitter/bootstrap/bootstrap-collapse.js  (0ms)  (pid 17429)
+Compiled twitter/bootstrap/bootstrap-carousel.js  (0ms)  (pid 17429)
+Compiled twitter/bootstrap/bootstrap-typeahead.js  (0ms)  (pid 17429)
+Compiled twitter/bootstrap/bootstrap-affix.js  (0ms)  (pid 17429)
+Compiled twitter/bootstrap.js  (1581ms)  (pid 17429)
+Compiled albums.js  (52ms)  (pid 17429)
+Compiled bootstrap.js  (3ms)  (pid 17429)
+Compiled application.js  (2350ms)  (pid 17429)
+Completed 200 OK in 5559ms (Views: 5175.1ms | ActiveRecord: 382.1ms)
+
+
+Started GET "/albums" for 193.34.3.1 at 2013-01-11 20:32:48 +0100
+Processing by AlbumsController#index as HTML
+  [1m[36mAlbum Load (120.7ms)[0m  [1mSELECT "albums".* FROM "albums" [0m
+  [1m[35mActsAsTaggableOn::Tag Load (120.5ms)[0m  SELECT tags.*, taggings.tags_count AS count FROM "tags" JOIN (SELECT taggings.tag_id, COUNT(taggings.tag_id) AS tags_count FROM "taggings" INNER JOIN albums ON albums.id = taggings.taggable_id WHERE (taggings.taggable_type = 'Album' AND taggings.context = 'tags') AND (taggings.taggable_id IN(SELECT albums.id FROM "albums" )) GROUP BY taggings.tag_id HAVING COUNT(taggings.tag_id) > 0) AS taggings ON taggings.tag_id = tags.id
+  Rendered albums/index.html.erb within layouts/application (121.8ms)
+Completed 200 OK in 332ms (Views: 89.8ms | ActiveRecord: 241.2ms)
+
+
+Started GET "/albums/new" for 193.34.3.1 at 2013-01-11 20:32:53 +0100
+Processing by AlbumsController#new as HTML
+  [1m[36mActsAsTaggableOn::Tag Load (119.2ms)[0m  [1mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."taggable_id" IS NULL AND "taggings"."taggable_type" = 'Album' AND (taggings.context = 'tags' AND taggings.tagger_id IS NULL)[0m
+  Rendered albums/_form.html.erb (483.9ms)
+  Rendered albums/new.html.erb within layouts/application (493.7ms)
+Completed 200 OK in 521ms (Views: 258.6ms | ActiveRecord: 253.1ms)
