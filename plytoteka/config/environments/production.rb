@@ -66,4 +66,7 @@ Plytoteka::Application.configure do
   # config.active_record.auto_explain_threshold_in_seconds = 0.5
 
   config.assets.compile = true
+
+  FACEBOOK_APP_ID='412348565508473'
+  FACEBOOK_SECRET='7b995cdf37551283c21f3ec4cbcd3dff'
 end

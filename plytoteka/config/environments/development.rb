@@ -34,4 +34,7 @@ Plytoteka::Application.configure do
 
   # Expands the lines which load the assets
   config.assets.debug = true
+
+  FACEBOOK_APP_ID='412348565508473'
+  FACEBOOK_SECRET='7b995cdf37551283c21f3ec4cbcd3dff'
 end

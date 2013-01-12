@@ -63,4 +63,8 @@ Plytoteka::Application.routes.draw do
 
   get 'tags/:tag', to: 'albums#index', as: :tag
 
+  match 'auth/:provider/callback', to: 'sessions#create'
+  match 'auth/failure', to: redirect('/')
+  match 'signout', to: 'sessions#destroy', as: 'signout'
+
 end
