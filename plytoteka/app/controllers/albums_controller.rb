@@ -1,12 +1,15 @@
 class AlbumsController < ApplicationController
   # GET /albums
   # GET /albums.json
+
+  helper_method :sort_column, :sort_direction
+
   def index
 
     if params[:tag]
-      @albums = Album.tagged_with(params[:tag])
+      @albums = Album.tagged_with(params[:tag]).order(sort_column + " " + sort_direction)
     else
-      @albums = Album.all
+      @albums = Album.order(sort_column + " " + sort_direction)
     end    
 
     respond_to do |format|
@@ -85,4 +88,13 @@ class AlbumsController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  def sort_column
+    Album.column_names.include?(params[:sort]) ? params[:sort] : "id"
+  end
+  
+  def sort_direction
+    %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
+  end
+
 end
