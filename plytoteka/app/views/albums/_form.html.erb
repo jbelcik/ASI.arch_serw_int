@@ -1,4 +1,4 @@
-<%= form_for @album do |f| %>
+<%= form_for @album, :html => {:multipart => true} do |f| %>
   
   <table> 
     <tr>
@@ -29,6 +29,22 @@
         <div class = "span6">
           <%= f.label :rok_powstania, "Rok powstania:" %>
           <%= f.text_field :rok_powstania, :class => "span6" %>
+        </div>
+      </td>
+    </tr>
+
+    <tr>
+      <td>
+        <div class = "span6">
+          <%= f.label :image, "Prześlij okładkę ze swojego komputera:" %>
+          <%= f.file_field :image, :class => "span6" %>
+        </div>
+      </td>
+
+      <td>
+        <div class = "span6">
+          <%= f.label :remote_image_url, "... lub podaj URL okładki:" %>
+          <%= f.text_field :remote_image_url, :class => "span6" %>
         </div>
       </td>
     </tr>

@@ -25,20 +25,18 @@
             <li>
                 <%= link_to "Płytoteka", albums_path %>
             </li>
-            <li>
-              <% if current_user %>
-                <li>
-                    Jesteś zalogowany jako <strong><%= current_user.name %></strong>!
-                </li>
-                <li>
-                  <%= link_to "Wyloguj się", signout_path, id: "sign_out" %>
-                </li>
-              <% else %>
-                <li>
-                  <%= link_to "Zaloguj się poprzez Facebooka", "/auth/facebook", id: "sign_in" %>
-                </li>
-              <% end %> 
-            </li>
+            <% if current_user %>
+              <li>
+                <%= link_to "Wyloguj się", signout_path, id: "sign_out" %>
+              </li>
+              <li style="margin-top: 10px; padding-left: 10px;">
+                  Jesteś zalogowany jako <strong><%= current_user.name %></strong>!
+              </li>
+            <% else %>
+              <li>
+                <%= link_to "Zaloguj się poprzez Facebooka", "/auth/facebook", id: "sign_in" %>
+              </li>
+            <% end %> 
           </ul>
         </div>
       </div>

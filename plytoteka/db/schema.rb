@@ -11,16 +11,10 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130112013011) do
+ActiveRecord::Schema.define(:version => 20130114224731) do
 
-  create_table "albums", :force => true do |t|
-    t.string   "tytul"
-    t.string   "wykonawca"
-    t.integer  "rok_powstania"
-    t.text     "opis"
-    t.datetime "created_at",    :null => false
-    t.datetime "updated_at",    :null => false
-  end
+# Could not dump table "albums" because of following StandardError
+#   Unknown type 'image' for column 'obrazek'
 
   create_table "taggings", :force => true do |t|
     t.integer  "tag_id"

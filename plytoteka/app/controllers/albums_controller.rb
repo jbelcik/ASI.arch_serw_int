@@ -1,3 +1,6 @@
+# encoding: UTF-8
+
+
 class AlbumsController < ApplicationController
   # GET /albums
   # GET /albums.json
@@ -52,7 +55,7 @@ class AlbumsController < ApplicationController
 
     respond_to do |format|
       if @album.save
-        format.html { redirect_to @album, notice: 'Album was successfully created.' }
+        format.html { redirect_to @album, notice: 'Album został pomyślnie dodany.' }
         format.json { render json: @album, status: :created, location: @album }
       else
         format.html { render action: "new" }
@@ -68,7 +71,7 @@ class AlbumsController < ApplicationController
 
     respond_to do |format|
       if @album.update_attributes(params[:album])
-        format.html { redirect_to @album, notice: 'Album was successfully updated.' }
+        format.html { redirect_to @album, notice: 'Album został pomyślnie zedytowany.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }

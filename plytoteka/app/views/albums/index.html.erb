@@ -13,7 +13,7 @@
 <table class="table">
   <thead>
     <tr>
-      <th width = "1">Okładka</th>
+      <th width="1">Okładka</th>
       <th><%= sortable "tytul", "Tytuł" %></th>
       <th><%= sortable "wykonawca", "Wykonawca" %></th>
       <th>Gatunek</th>
@@ -28,12 +28,12 @@
       <% @albums.each do |album| %>
     
       <tr style="background-color: <%= colortab[i % 2] %>;">
-        <td rowspan = "2">tutaj będą kiedyś okładki ;)</td>
+        <td rowspan = "2"><img src="<%= album.image_url.to_s %>" width="200px"></td>
         <td><%= link_to album.tytul, album %></td>
         <td><%= album.wykonawca %></td>
         <td><%= raw album.tag_list.map { |t| link_to t, tag_path(t) }.join(', ') %></td>
         <td><%= album.rok_powstania %></td>
-        <td><%= link_to 'Edytuj', edit_album_path(album), :class => "btn" %> 
+        <td><%= link_to 'Edytuj', edit_album_path(album), :class => "btn" %>
             <%= link_to 'Usuń', album, method: :delete, data: { confirm: 'Jesteś pewien?' }, :class => "btn" %></td>
       </tr>
       <tr style="background-color: <%= colortab[i % 2] %>;">
